@@ -1,0 +1,9 @@
+@import "../default/color.scss";
+@import "~bootstrap/scss/bootstrap";
+header{
+    background: $defaultWhite;
+    color: $defaultBlack;
+    padding: 15px 0;
+    font-size: 20px;
+    border-bottom: 1px solid $defaultBorderColor;
+}
