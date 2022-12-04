@@ -1,4 +1,5 @@
 import './App.scss';
+import "./style/default/defaultTema.scss";
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ListPage from './pages/listPage';

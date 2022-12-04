@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import "../style/pages/addPage.scss";
+
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -41,8 +42,8 @@ function AddCharacterPage({ addNewCharacter }) {
             <h4>Loading...</h4>) :
             (
 
-              <form className='formContainer' onSubmit={e => { handleSubmit(e) }}>
-                <div className='formContainer__body'>
+              <form className='formContainer defaultContainer' onSubmit={e => { handleSubmit(e) }}>
+                <div className='defaultBody formContainer__body'>
                   <div className='col-lg-12 col-md-12 col-sm-12 col-12'>
                     <label className='col-lg-12 col-md-12 col-sm-12 col-12'>Name Surname:</label>
 

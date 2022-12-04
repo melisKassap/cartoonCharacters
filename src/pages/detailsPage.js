@@ -29,8 +29,8 @@ function DetailsPage(props) {
             <h4>Loading...</h4>) :
             (
 
-              <div className="detail__container">
-                <div>
+              <div className="defaultContainer detail__container h-100">
+                <div className="defaultBody">
                   <div className="col-lg-12 col-md-12 col-sm-12 col-12 text-center avatar__icon">
                     <img src={characters ? (characters.avatar ? (((characters.avatar).split("png"))[0] + `png`) :"-") :"-"} title={characters.name} alt={characters.name} />
                   </div>

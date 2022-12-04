@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react'
 import "../style/pages/listPage.scss"
-import { BsArrowUpCircle, BsArrowDownCircle, BsTrash } from "react-icons/bs";
+import { BsArrowUpCircle, BsArrowDownCircle, BsTrash, BsPlusCircleFill } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 import { getCharactersData } from '../services';
 import { useSelector, useDispatch } from 'react-redux';
@@ -100,7 +100,10 @@ function ListPage() {
             )
           }
         </div>
-        <div className='addCharacterButton'> <Link to={`/add`}> <label className='name'>add</label></Link></div>
+        <div className='addCharacterButton'> <Link to={`/add`}> 
+        <span className='name' title='Add New Character' alt="Add New Character"><BsPlusCircleFill/></span>
+        {/* <label className='name'>Add New Character</label> */}
+        </Link></div>
 
       </div>
     </>

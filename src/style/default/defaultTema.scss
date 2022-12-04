@@ -1,0 +1,21 @@
+@import "../default/color.scss";
+@import "~bootstrap/scss/bootstrap";
+.container{
+    background-color: $defaultBacgroundColor;
+}
+.defaultContainer{
+    padding: 2% 20%;
+    .defaultBody{
+        border: 1px solid $defaultBorderColor;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 5% 0;
+    }
+    
+}
+
+@media (max-width: 768px) {
+    .defaultContainer {
+        padding: 2% 10% !important;
+    }
+  }

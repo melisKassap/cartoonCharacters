@@ -6,13 +6,10 @@
     background-color: $defaultBacgroundColor;
 
     .formContainer {
-        padding: 2% 20%;
+      
        
         .formContainer__body{
-            border: 1px solid $defaultBorderColor;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 5% 0;
+          
             .form__inputContainer {
                 border-radius: 8px;
                 border: 1px solid $defaultBorderColor;            
