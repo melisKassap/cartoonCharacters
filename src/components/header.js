@@ -7,6 +7,7 @@ function HeaderComponent() {
   return (
     <header className="text-center">
     Simpsons
+    - navigation-
         </header>
   )
 }

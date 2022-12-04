@@ -1,0 +1,57 @@
+@import "../default/color.scss";
+@import "~bootstrap/scss/bootstrap";
+
+.listPage__container {
+    padding: 20px 0;
+    .list__container {
+        align-items: center;
+        padding: 20px 0;
+        border-bottom: 1px solid $defaultBorderColor;
+
+        .avatar__context {
+            .avatarIcon {
+                width: 40px;
+            }
+
+        }
+
+        .avatarName__context {
+            cursor: pointer;
+           .name{
+            font-size: 20px;
+            cursor: pointer;
+           }
+           .name:hover{
+            font-weight: bold;
+           }
+        }
+
+        .avatar__settings {
+            
+            align-items: center;
+            justify-content: space-around;
+            .up__icon{
+                color: $defaultGreen;
+                cursor: pointer;
+                font-size: 28px;
+            }
+           
+            .down__icon{
+                color: $defaultRed;
+                cursor: pointer;
+                font-size: 28px;
+            }
+           
+            .trash__icon{
+                color: black;
+                cursor: pointer;
+                font-size: 28px;
+            }
+            .down__icon:hover,
+            .up__icon:hover,
+            .trash__icon:hover{
+               font-size: 29px;
+            }
+        }
+    }
+}
