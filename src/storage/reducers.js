@@ -1,6 +1,6 @@
 export function reducer(state, action) {
     switch (action.type) {
-        
+
 
         case "ADD_NEW_CHARACTER_DATA":
             console.log(action.charactersData)
@@ -8,8 +8,12 @@ export function reducer(state, action) {
             return { ...state }
 
         case "GET_CHARACTER_DATA":
-          
+
             state.characterData = action.posts
+            return { ...state }
+
+        case "UPDATE_CHARACTER_DATA":
+            state.characterData = action.charactersData
             return { ...state }
 
         default:

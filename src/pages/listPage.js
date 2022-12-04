@@ -5,6 +5,7 @@ import { BsArrowUpCircle, BsArrowDownCircle, BsTrash } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 import { getCharactersData } from '../services';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 function ListPage() {
 
@@ -12,6 +13,7 @@ function ListPage() {
   const [posts, setPosts] = useState([]);
   const charactersData = useSelector(state => state.characterData)
   const dispatch = useDispatch()
+  const navigate = useNavigate();
 
   useEffect(() => {
     const loadPost = async () => {
@@ -39,6 +41,35 @@ function ListPage() {
     }
   }
   setStorageData();
+
+  const deleteCharacters= (id) =>{
+    const objWithIdIndex = charactersData.findIndex((obj) => obj.id === id);
+
+    if (objWithIdIndex > -1) {
+      charactersData.splice(objWithIdIndex, 1);
+    }
+    dispatch({ type: "UPDATE_CHARACTER_DATA", charactersData });
+    navigate('/');
+    return charactersData;
+  }
+
+  const reorderArray = (event, originalArray) => {
+    const movedItem = originalArray.find((item, index) => index === event.oldIndex);
+    const remainingItems = originalArray.filter((item, index) => index !== event.oldIndex);
+  
+    const reorderedItems = [
+        ...remainingItems.slice(0, event.newIndex),
+        movedItem,
+        ...remainingItems.slice(event.newIndex)
+    ];
+  
+    return reorderedItems;
+  }
+
+  function changeSelectItemIndex(index, direction) {
+    setPosts(reorderArray({oldIndex: index, newIndex: index + (direction === "UP" ? (-1) : 1)}, charactersData));
+  }
+
   return (
     <>
       <div className="listPage__container">
@@ -59,9 +90,9 @@ function ListPage() {
                   <Link to={`/details/` + item.id}> <label className='name'>{item.name}</label></Link>
                 </div>
                 <div className="col-lg-3 col-md-3 col-sm-4 col-4 avatar__settings d-flex">
-                  <span className='up__icon'><BsArrowUpCircle /></span>
-                  <span className='down__icon'><BsArrowDownCircle /></span>
-                  <span className='trash__icon'><BsTrash /></span>
+                  <span className='up__icon' onClick={() => changeSelectItemIndex(key, "UP")}><BsArrowUpCircle /></span>
+                  <span className='down__icon'onClick={() => changeSelectItemIndex(key, "DOWN")}><BsArrowDownCircle /></span>
+                  <span className='trash__icon' onClick={()=>{deleteCharacters(item.id)}}><BsTrash /></span>
                 </div>
 
               </div>
