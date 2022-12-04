@@ -10,22 +10,24 @@ import FooterComponent from './components/footer';
 class App extends Component {
   render() {
     return (
-      <Router>
-        <div className="App">
-          <HeaderComponent />
-          <Routes>
-            <Route exact path='/' element={< ListPage />}></Route>
-            <Route exact path='/add' element={< AddCharacterPage />}></Route>
-            <Route exact path='/details' element={< DetailsPage />}>
+   
+        <Router>
+          <div className="App h-100">
+            <HeaderComponent />
+            <Routes>
+              <Route exact path='/' element={< ListPage />}></Route>
+              <Route exact path='/add' element={< AddCharacterPage />}></Route>
+              <Route exact path='/details' element={< DetailsPage />}>
 
-              <Route path=':id' element={<DetailsPage />} />
+                <Route path=':id' element={<DetailsPage />} />
 
-            </Route>
+              </Route>
 
-          </Routes>
-          <FooterComponent />
-        </div>
-      </Router>
+            </Routes>
+            <FooterComponent />
+          </div>
+        </Router>
+     
     );
   }
 }

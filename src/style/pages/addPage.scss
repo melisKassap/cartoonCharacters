@@ -1,0 +1,38 @@
+@import "../default/color.scss";
+@import "~bootstrap/scss/bootstrap";
+
+.addPage__container {
+    padding: 20px 0;
+    background-color: $defaultBacgroundColor;
+
+    .formContainer {
+        padding: 2% 20%;
+       
+        .formContainer__body{
+            border: 1px solid $defaultBorderColor;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 5% 0;
+            .form__inputContainer {
+                border-radius: 8px;
+                border: 1px solid $defaultBorderColor;            
+                margin: 15px 0;
+                height: 40px;
+                padding-left: 10px;
+            }
+            .form__inputContainerTextArea{
+                border-radius: 8px;
+                border: 1px solid $defaultBorderColor;            
+                margin: 15px 0;
+                padding-left: 10px;
+            }
+        }
+       
+    }
+}
+
+@media (max-width: 768px) {
+    .formContainer {
+        padding: 2% 10% !important;
+    }
+  }

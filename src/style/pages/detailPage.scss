@@ -1,2 +1,34 @@
 @import "../default/color.scss";
 @import "~bootstrap/scss/bootstrap";
+
+.detailPage__container {
+    padding: 20px 0;
+    background-color: $defaultBacgroundColor;
+    .detail__container {
+        align-items: center;
+        padding: 20px 0;
+        border-bottom: 1px solid $defaultBorderColor;
+
+      .avatar__icon{
+        img{
+            height: 200px;
+        }
+      }
+      .avatar__title{
+        .title{
+            font-size: 24px;
+            margin: 0;
+        }
+      }
+      .avatar__job{
+        .avatar__jobName{
+            font-size: 20px;
+            color: $fontColor1;
+        }
+      }
+      .avatar__detail{
+        margin-top: 15px;
+        color: $fontColor1;
+      }
+    }
+}
