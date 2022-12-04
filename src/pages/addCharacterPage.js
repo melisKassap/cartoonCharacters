@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import "../style/pages/addPage.scss";
+import { useSelector, useDispatch } from 'react-redux';
+import {Navigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 function AddCharacterPage({ addNewCharacter}) {
 
@@ -7,17 +10,29 @@ function AddCharacterPage({ addNewCharacter}) {
   const [job, setJob] = useState("");
   const [about, setAbout] = useState("");
   const [imageLink, setImageLink] = useState("");
+  const charactersData = useSelector(state => state.characterData)
+  const dispatch = useDispatch();
 
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(nameSurname, job, about, imageLink)
+    charactersData.push({
+      "name":nameSurname,
+      "avatar":imageLink,
+      "job":job,
+      "description":about,
+      "id":(parseInt((charactersData[charactersData.length - 1]).id)) + 1
+      })
+      dispatch({type:"ADD_NEW_CHARACTER_DATA", charactersData});
+      //window.location.href="/"
+      navigate('/');
+      
   }
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(false);
   }, []);
-
   return (
     <>
       <div className="addPage__container h-100">

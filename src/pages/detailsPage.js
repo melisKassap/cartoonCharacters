@@ -1,53 +1,57 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import "../style/pages/detailPage.scss"
-
+import { useParams } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 function DetailsPage(props) {
- 
   const [loading, setLoading] = useState(false);
+  const [characters, setCharacter] = useState([]);
+  const { id } = useParams();
+  const charactersData = useSelector(state => state.characterData)
+  
+
+  const foundCharacterData = charactersData.find(obj => {
+    return obj.id === id;
+  });
 
   useEffect(() => {
+    setCharacter(foundCharacterData)
     setLoading(false);
-  }, []);
+  }, [id]);
+
 
   return (
     <>
-    <div className="detailPage__container">
-      <div className='col-lg-12 col-md-12 col-sm-12 col-12 container no-padding'>
-        {loading ? (
+      <div className="detailPage__container h-100">
+        <div className='col-lg-12 col-md-12 col-sm-12 col-12 container no-padding'>
+          {loading ? (
 
-          <h4>Loading...</h4>) :
-          (
+            <h4>Loading...</h4>) :
+            (
 
-            <div className="detail__container">
-              <div className="col-lg-12 col-md-12 col-sm-12 col-12 text-center avatar__icon">
-                <img src="https://static.wikia.nocookie.net/simpsons/images/b/bd/Homer_Simpson.png" title="" alt=""/>
+              <div className="detail__container">
+                <div>
+                  <div className="col-lg-12 col-md-12 col-sm-12 col-12 text-center avatar__icon">
+                    <img src={characters ? (characters.avatar ? (((characters.avatar).split("png"))[0] + `png`) :"-") :"-"} title={characters.name} alt={characters.name} />
+                  </div>
+                  <div className="col-lg-12 col-md-12 col-sm-12 col-12 avatar__title text-center">
+                    <h1 className="title">{characters.name}</h1>
+                  </div>
+                  <div className="col-lg-12 col-md-12 col-sm-12 col-12 avatar__job text-center">
+                    <label className='avatar__jobName'>{characters.job}</label>
+                  </div>
+                  <div className="col-lg-12 col-md-12 col-sm-12 col-12 avatar__detail">
+                    <p>{characters.description}</p>
+                  </div>
+                </div>
               </div>
-              <div className="col-lg-12 col-md-12 col-sm-12 col-12 avatar__title text-center">
-                <h1 className="title">Homer Simpson</h1>
-              </div>
-              <div className="col-lg-12 col-md-12 col-sm-12 col-12 avatar__job text-center">
-                <label className='avatar__jobName'>Nuclear Safety Inspector</label>
-              </div>
-              <div className="col-lg-12 col-md-12 col-sm-12 col-12 avatar__detail">
-               <p>Homer Jay Simpson (born May 12, 1956) is the main protagonist and one of 
-                the five main characters of The Simpsons series (or show).
-                 He is the spouse of Marge Simpson and father of Bart, Lisa and 
-                 Maggie Simpson. Homer is overweight (said to be ~240 pounds), 
-                 lazy, and often ignorant to the world around him. Although Homer has 
-                 many flaws, he has shown to have great caring, love, and even bravery 
-                 to those he cares about and, sometimes, even others he doesn't. He also
-                  serves as the main protagonist of the The Simpsons Movie. He is 39 years 
-                  old and was born in 1956.</p>
-              </div>
-            </div>
-          
-          )
-        }
+
+            )
+          }
+        </div>
+
       </div>
-
-    </div>
-  </>
+    </>
   );
 }
 
