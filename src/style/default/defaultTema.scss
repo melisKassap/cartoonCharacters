@@ -3,6 +3,12 @@
 .container{
     background-color: $defaultBacgroundColor;
 }
+.backgroundNone{
+    background-color: $defaultWhite !important;
+}
+.customBlack{
+    color: $defaultBlack;
+}
 .defaultContainer{
     padding: 2% 20%;
     .defaultBody{
@@ -13,6 +19,8 @@
     }
     
 }
+
+
 
 @media (max-width: 768px) {
     .defaultContainer {
